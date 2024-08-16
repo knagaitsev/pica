@@ -2034,6 +2034,8 @@ Pica.prototype.__extractTileData = function (tile, from, opts, stageEnv, extract
   var tmpCtx = tmpCanvas.getContext('2d');
   tmpCtx.globalCompositeOperation = 'copy';
   tmpCtx.drawImage(stageEnv.srcImageBitmap || from, tile.x, tile.y, tile.width, tile.height, 0, 0, tile.width, tile.height);
+  this.debug(stageEnv.srcImageBitmap);
+  this.debug(from);
   this.debug('Get tile pixel data');
   extractTo.src = tmpCtx.getImageData(0, 0, tile.width, tile.height).data;
 
@@ -2367,7 +2369,9 @@ Pica.prototype.toBlob = function (canvas, mimeType, quality) {
     }));
   });
 };
-Pica.prototype.debug = function () {};
+Pica.prototype.debug = function (s) {
+  console.log(s);
+};
 module.exports = Pica;
 
 },{"./lib/mathlib":1,"./lib/mm_resize/resize_filter_info":7,"./lib/pool":13,"./lib/stepper":14,"./lib/tiler":15,"./lib/utils":16,"./lib/worker":17,"object-assign":22,"webworkify":23}]},{},[])("/index.js")
