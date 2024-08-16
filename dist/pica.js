@@ -2309,9 +2309,11 @@ Pica.prototype.resize = function (from, to, options) {
       _this6.debug('cib is enabled, but not supports provided filter, fallback to manual math');
     }
     if (!CAN_USE_CANVAS_GET_IMAGE_DATA) {
-      var err = new Error('Pica: cannot use getImageData on canvas, ' + "make sure fingerprinting protection isn't enabled");
-      err.code = 'ERR_GET_IMAGE_DATA';
-      throw err;
+      console.warn('Pica: getImageData fingerprinting protection detected, image quality will be reduced.');
+      // let err = new Error('Pica: cannot use getImageData on canvas, ' +
+      //                     "make sure fingerprinting protection isn't enabled");
+      // err.code = 'ERR_GET_IMAGE_DATA';
+      // throw err;
     }
 
     //
@@ -2370,7 +2372,7 @@ Pica.prototype.toBlob = function (canvas, mimeType, quality) {
   });
 };
 Pica.prototype.debug = function (s) {
-  console.log(s);
+  // console.log(s);
 };
 module.exports = Pica;
 
