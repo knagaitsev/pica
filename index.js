@@ -308,6 +308,9 @@ Pica.prototype.__extractTileData = function (tile, from, opts, stageEnv, extract
     tile.x, tile.y, tile.width, tile.height,
     0, 0, tile.width, tile.height);
 
+  this.debug(stageEnv.srcImageBitmap);
+  this.debug(from);
+
   this.debug('Get tile pixel data');
 
   extractTo.src = tmpCtx.getImageData(0, 0, tile.width, tile.height).data;
@@ -723,7 +726,9 @@ Pica.prototype.toBlob = function (canvas, mimeType, quality) {
 };
 
 
-Pica.prototype.debug = function () {};
+Pica.prototype.debug = function (s) {
+  console.log(s);
+};
 
 
 module.exports = Pica;
